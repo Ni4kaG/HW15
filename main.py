@@ -1,6 +1,9 @@
+import pprint
+
 import telebot
 import time
 import os
+import hh_pars_for_bot as hh
 from telebot import apihelper
 
 TOKEN = '5548452354:AAGVMdLWqVXFhBZ7plfNtICJpzMGxt44oc8'
@@ -18,6 +21,19 @@ def timer(message):
     for i in range(5):
         time.sleep(1)
         bot.send_message(message.chat.id, i + 1)
+
+
+@bot.message_handler(commands=['hh'])
+def hh_pars(message):
+    pprint.pprint(message)
+    name = ''.join(message.text.split(' ')[1:]) #.replace(',', ' OR ')
+    region = 'Москва'
+    print(name)
+    print(region)
+
+    bot.send_message(message.chat.id,hh.pars_hh(name, region))
+    with open('skills.png', 'rb') as data:
+        bot.send_photo(message.chat.id, data)
 
 
 # Команда в параметром
@@ -78,11 +94,5 @@ def reverse_text(message):
     text = message.text[::-1]
     bot.reply_to(message, text)
 
-
-# @bot.message_handler(content_types=['sticker'])
-# def send_sticker(message):
-#     FILE_ID = 'CAADAgADPQMAAsSraAsqUO_V6idDdBYE'
-#     bot.send_sticker(message.chat.id, FILE_ID)
-#
 
 bot.polling()

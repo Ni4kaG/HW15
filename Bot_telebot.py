@@ -37,7 +37,7 @@ def say(message):
 
 
 # Команда администратора
-@bot.message_handler(commands=['admin'], func=lambda message: message.from_user.username == 'DanteOnline')
+@bot.message_handler(commands=['admin'], func=lambda message: message.from_user.username == 'VGZhi')
 def admin(message):
     print(message)
     info = os.name
@@ -46,7 +46,7 @@ def admin(message):
 
 @bot.message_handler(commands=['admin2'])
 def admin2(message):
-    if message.from_user.username == 'DanteOnline':
+    if message.from_user.username == 'VGZhi':
         info = os.name
         bot.reply_to(message, info)
     else:
