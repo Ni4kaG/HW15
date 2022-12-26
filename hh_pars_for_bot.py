@@ -86,4 +86,4 @@ def pars_hh(name, region):
     print(res_txt)
     return res_txt
 
-# pars_hh('python OR java', 'Москва')
+pars_hh('python OR java', 'Москва')
